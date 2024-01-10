@@ -1,0 +1,16 @@
+name: s1_rtc
+channels:
+  - conda-forge
+dependencies:
+  - asf_search>=6.7.2
+  - gdal
+  - ipyfilechooser
+  - ipywidgets
+  - jupyterlab
+  - matplotlib-base
+  - opensarlab_lib
+  - pandas
+  - pip
+  - scipy
+  - pip:
+    - url_widget

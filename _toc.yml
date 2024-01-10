@@ -1,6 +1,22 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Software Environments
+    chapters:
+      - file: environments/S1_RTC_env
   - caption: NISAR
     chapters:
+      - url: https://nisar.jpl.nasa.gov/
+        title: NISAR Website
       - file: NISAR/NISAR_sample_data.ipynb
+  # - caption: Sentinel 1
+  #   chapters:
+  #     - 
+  - caption: OPERA
+    chapters:
+      - url: https://www.jpl.nasa.gov/go/opera
+        title: OPERA Website
+      - file: OPERA/OPERA_data_access.md
+        sections:
+        - file: OPERA/search_download_OPERA-RTC-S1.ipynb
+        - file: OPERA/search_download_OPERA-CSLC-S1.ipynb
