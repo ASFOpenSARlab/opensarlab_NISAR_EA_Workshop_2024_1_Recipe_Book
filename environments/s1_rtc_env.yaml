@@ -4,6 +4,7 @@ channels:
 dependencies:
   - asf_search>=6.7.2
   - gdal
+  - h5py
   - ipyfilechooser
   - ipywidgets
   - jupyterlab

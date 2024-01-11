@@ -1,6 +1,10 @@
 format: jb-book
 root: intro
 parts:
+  - caption: Workshop Slides
+    chapters:
+      - url: https://docs.google.com/presentation/d/1aXE2_k2QzRtSwQpkssZCbiT2WQ6spSU-Kzj6Ne9wVnk/edit?usp=sharing
+        title: NISAR Early Adopter Workshop 1 2024 Slides
   - caption: Software Environments
     chapters:
       - file: environments/S1_RTC_env
@@ -20,3 +24,6 @@ parts:
         sections:
         - file: OPERA/search_download_OPERA-RTC-S1.ipynb
         - file: OPERA/search_download_OPERA-CSLC-S1.ipynb
+      - file: OPERA/OPERA_data_recipes.md
+        sections:
+        - file: OPERA/OPERA-RTC-S1-time_series.ipynb
