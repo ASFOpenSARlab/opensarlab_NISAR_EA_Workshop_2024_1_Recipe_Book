@@ -1,4 +1,4 @@
-name: s1_rtc
+name: rtc
 channels:
   - conda-forge
 dependencies:
@@ -9,6 +9,7 @@ dependencies:
   - ipywidgets
   - jupyterlab
   - matplotlib-base
+  - numpy
   - opensarlab_lib
   - pandas
   - pip
