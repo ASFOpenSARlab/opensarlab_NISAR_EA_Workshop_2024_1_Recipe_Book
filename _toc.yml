@@ -7,7 +7,7 @@ parts:
         title: NISAR Early Adopter Workshop 1 2024 Slides
   - caption: Software Environments
     chapters:
-      - file: environments/S1_RTC_env
+      - file: environments/RTC_env
   - caption: NISAR
     chapters:
       - url: https://nisar.jpl.nasa.gov/
