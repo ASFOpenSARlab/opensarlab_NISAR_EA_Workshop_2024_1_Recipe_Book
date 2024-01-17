@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-env="osl_mintpy"
+env="NISAR_EA_Workshop_2024_1"
 local="/home/jovyan/.local"
 env_prefix=$local"/envs/"$env
 python_version=$(conda run -n $env python --version | cut -b 8-10)
