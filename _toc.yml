@@ -7,12 +7,13 @@ parts:
         title: NISAR Early Adopter Workshop 1 2024 Slides
   - caption: Software Environments
     chapters:
-      - file: environments/RTC_env
+      - file: environment/build_conda_env.ipynb
   - caption: NISAR
     chapters:
       - url: https://nisar.jpl.nasa.gov/
         title: NISAR Website
       - file: NISAR/NISAR_sample_data.ipynb
+      - file: NISAR/Calif_CentralValley_time_series.ipynb
   # - caption: Sentinel 1
   #   chapters:
   #     - 
