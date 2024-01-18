@@ -14,9 +14,6 @@ parts:
         title: NISAR Website
       - file: NISAR/NISAR_sample_data.ipynb
       - file: NISAR/Calif_CentralValley_time_series.ipynb
-  # - caption: Sentinel 1
-  #   chapters:
-  #     - 
   - caption: OPERA
     chapters:
       - url: https://www.jpl.nasa.gov/go/opera
@@ -29,3 +26,13 @@ parts:
         sections:
         - file: OPERA/OPERA_RTC_timeseries_snow.ipynb
         - file: OPERA/OPERA-RTC-S1-time_series.ipynb
+  - caption: ASF HyP3 On-Demand Processing
+    chapters:
+      - url: https://hyp3-docs.asf.alaska.edu/
+        title: HyP3 Documentation 
+      - file: HyP3/HyP3_data_access.md
+        sections:
+        - file: HyP3/hyp3_insar_permafrost.ipynb
+      - file: HyP3/HyP3_data_recipes.md
+        sections:
+        - file: HyP3/MintPy_sbas_permafrost_Alaska.ipynb
