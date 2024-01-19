@@ -5,7 +5,7 @@ parts:
     chapters:
       - url: https://docs.google.com/presentation/d/1aXE2_k2QzRtSwQpkssZCbiT2WQ6spSU-Kzj6Ne9wVnk/edit?usp=sharing
         title: NISAR Early Adopter Workshop 1 2024 Slides
-  - caption: Software Environments
+  - caption: Software Environment
     chapters:
       - file: environment/build_conda_env.ipynb
   - caption: NISAR
@@ -36,3 +36,15 @@ parts:
       - file: HyP3/HyP3_data_recipes.md
         sections:
         - file: HyP3/MintPy_sbas_permafrost_Alaska.ipynb
+  - caption: Additional Resources
+    chapters:
+      - url: https://search.asf.alaska.edu/
+        title: ASF Data Search (Vertex)
+      - url: https://opensarlab.asf.alaska.edu/
+        title: ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)
+      - url: https://docs.asf.alaska.edu/vertex/manual/
+        title: ASF SAR Data Search User Manual
+      - url: https://www.hdfgroup.org/downloads/hdfview/
+        title: HDFView Software
+      - url: https://github.com/insarlab/MintPy
+        title: Miami InSAR Time-Series Software in Python (MintPy)
