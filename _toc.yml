@@ -52,7 +52,13 @@ parts:
         title: ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)
       - url: https://docs.asf.alaska.edu/vertex/manual/
         title: ASF SAR Data Search User Manual
+      - url: https://github.com/RadarCODE/awesome-sar
+        title: awesome-sar GitHub Repo (Directory of SAR resources)
       - url: https://www.hdfgroup.org/downloads/hdfview/
         title: HDFView Software
       - url: https://github.com/insarlab/MintPy
         title: Miami InSAR Time-Series Software in Python (MintPy)
+      - url: https://radar.community.uaf.edu/
+        title: Microwave Remote Sensing Class Website, UAF, Dr. Franz Meyer
+
+
