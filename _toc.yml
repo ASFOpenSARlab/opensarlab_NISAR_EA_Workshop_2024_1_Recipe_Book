@@ -12,12 +12,18 @@ parts:
     chapters:
       - url: https://nisar.jpl.nasa.gov/
         title: NISAR Website
+      - url: https://github.com/isce-framework
+        title: isce-framework GitHub Org 
+      - url: https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/
+        title: ARIA Sentinel-1 GUNW Information
       - file: NISAR/NISAR_sample_data.ipynb
       - file: NISAR/Calif_CentralValley_time_series.ipynb
   - caption: OPERA
     chapters:
       - url: https://www.jpl.nasa.gov/go/opera
         title: OPERA Website
+      - url : https://github.com/opera-adt
+        title: OPERA Algorithm Development Team GitHub Org
       - file: OPERA/OPERA_data_access.md
         sections:
         - file: OPERA/search_download_OPERA-RTC-S1.ipynb
@@ -30,16 +36,18 @@ parts:
     chapters:
       - url: https://hyp3-docs.asf.alaska.edu/
         title: HyP3 Documentation 
+      - url: https://search.asf.alaska.edu/
+        title: ASF Data Search (Vertex)
       - file: HyP3/HyP3_data_access.md
         sections:
         - file: HyP3/hyp3_insar_permafrost.ipynb
       - file: HyP3/HyP3_data_recipes.md
         sections:
+        - url: https://www.youtube.com/watch?v=tq8nZpsWK6k
+          title: MintPy SBAS Webinar
         - file: HyP3/MintPy_sbas_permafrost_Alaska.ipynb
   - caption: Additional Resources
     chapters:
-      - url: https://search.asf.alaska.edu/
-        title: ASF Data Search (Vertex)
       - url: https://opensarlab.asf.alaska.edu/
         title: ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)
       - url: https://docs.asf.alaska.edu/vertex/manual/
