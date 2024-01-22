@@ -14,6 +14,8 @@ parts:
         sections:
         - url: https://nisar.jpl.nasa.gov/
           title: NISAR Website
+        - url: https://asf.alaska.edu/nisar/
+          title: ASF NISAR Page
         - url: https://nisar.jpl.nasa.gov/documents/26/NISAR_FINAL_9-6-19.pdf
           title: NISAR Mission Science Users’ Handbook
         - url: https://nisar.jpl.nasa.gov/engagement/early-adopters/
@@ -72,6 +74,8 @@ parts:
         - file: HyP3/MintPy_sbas_permafrost_Alaska.ipynb
   - caption: Additional Resources
     chapters:
+      - url: https://asf.alaska.edu/
+        title: ASF Website
       - url: https://opensarlab.asf.alaska.edu/
         title: ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)
       - url: https://github.com/RadarCODE/awesome-sar
@@ -81,4 +85,12 @@ parts:
       - url: https://github.com/insarlab/MintPy
         title: Miami InSAR Time-Series Software in Python (MintPy)
       - url: https://radar.community.uaf.edu/
-        title: Microwave Remote Sensing Class Website, UAF, Dr. Franz Meyer
+        title: Microwave Remote Sensing Class Website, in-person and remote, UAF, Dr. Franz Meyer
+      - url: https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations
+        title: SAR Foundations, Online edX class, UAF, Dr. Franz Meyer
+      - url: https://www.edx.org/learn/earth-sciences/university-of-alaska-fairbanks-synthetic-aperture-radar-hazards
+        title: SAR Hazards, Online edX class, UAF, Dr. Franz Meyer
+      - url: https://www.edx.org/learn/ecosystems/university-of-alaska-fairbanks-synthetic-aperture-radar-ecosystems
+        title: SAR Ecosystems, Online edX class, UAF, Dr. Franz Meyer
+        
+        
