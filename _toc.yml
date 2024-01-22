@@ -58,6 +58,8 @@ parts:
           title: ASF SAR Data Search User Manual
         - url: https://github.com/asfadmin/Discovery-asf_search
           title: asf_search Python Package
+        - url: https://github.com/asfadmin/Discovery-asf_search/tree/master/examples
+          title: asf_search Programmatic Access Examples
         - url: https://github.com/ASFHyP3/hyp3-sdk
           title: hyp3_sdk Python Package
         - url: https://nbviewer.org/github/ASFHyP3/hyp3-sdk/blob/main/docs/sdk_example.ipynb
@@ -87,7 +89,7 @@ parts:
       - url: https://github.com/insarlab/MintPy
         title: Miami InSAR Time-Series Software in Python (MintPy)
       - url: https://www.earthscope.org/event/2023-insar-isce-short-course/
-        title: UNAVCO InSAR Processing and Analysis (ISCE+) Short Course
+        title: EarthScope InSAR Processing and Analysis (ISCE+) Short Course
       - url: https://radar.community.uaf.edu/
         title: Microwave Remote Sensing Class Website, in-person and remote, UAF, Dr. Franz Meyer
       - url: https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations
