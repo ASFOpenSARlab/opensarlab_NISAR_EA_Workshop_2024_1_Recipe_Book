@@ -36,6 +36,8 @@ parts:
           title: OPERA Website
         - url : https://github.com/opera-adt
           title: OPERA Algorithm Development Team GitHub Org
+        - url: https://github.com/OPERA-Cal-Val/OPERA_Applications/tree/main
+          title: OPERA_Applications Repo (OPERA data recipes)
       - file: OPERA/OPERA_data_access.md
         sections:
         - file: OPERA/search_download_OPERA-RTC-S1.ipynb
@@ -84,6 +86,8 @@ parts:
         title: HDFView Software
       - url: https://github.com/insarlab/MintPy
         title: Miami InSAR Time-Series Software in Python (MintPy)
+      - url: https://www.earthscope.org/event/2023-insar-isce-short-course/
+        title: UNAVCO InSAR Processing and Analysis (ISCE+) Short Course
       - url: https://radar.community.uaf.edu/
         title: Microwave Remote Sensing Class Website, in-person and remote, UAF, Dr. Franz Meyer
       - url: https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations
