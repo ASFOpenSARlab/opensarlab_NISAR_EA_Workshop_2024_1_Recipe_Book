@@ -10,20 +10,30 @@ parts:
       - file: environment/build_conda_env.ipynb
   - caption: NISAR
     chapters:
-      - url: https://nisar.jpl.nasa.gov/
-        title: NISAR Website
-      - url: https://github.com/isce-framework
-        title: isce-framework GitHub Org 
-      - url: https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/
-        title: ARIA Sentinel-1 GUNW Information
+      - file: NISAR/NISAR_resources.md
+        sections:
+        - url: https://nisar.jpl.nasa.gov/
+          title: NISAR Website
+        - url: https://nisar.jpl.nasa.gov/documents/26/NISAR_FINAL_9-6-19.pdf
+          title: NISAR Mission Science Users’ Handbook
+        - url: https://nisar.jpl.nasa.gov/engagement/early-adopters/
+          title: NISAR Early Adopters Program
+        - url: https://github.com/isce-framework
+          title: isce-framework GitHub Org 
+        - url: https://nisar.jpl.nasa.gov/data/sample-data/
+          title: NISAR Sample Data Site
+        - url: https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/
+          title: ARIA Sentinel-1 GUNW Information
       - file: NISAR/NISAR_sample_data.ipynb
       - file: NISAR/Calif_CentralValley_time_series.ipynb
   - caption: OPERA
     chapters:
-      - url: https://www.jpl.nasa.gov/go/opera
-        title: OPERA Website
-      - url : https://github.com/opera-adt
-        title: OPERA Algorithm Development Team GitHub Org
+      - file: OPERA/OPERA_resources.md
+        sections:
+        - url: https://www.jpl.nasa.gov/go/opera
+          title: OPERA Website
+        - url : https://github.com/opera-adt
+          title: OPERA Algorithm Development Team GitHub Org
       - file: OPERA/OPERA_data_access.md
         sections:
         - file: OPERA/search_download_OPERA-RTC-S1.ipynb
@@ -34,10 +44,24 @@ parts:
         - file: OPERA/OPERA-RTC-S1-time_series.ipynb
   - caption: ASF HyP3 On-Demand Processing
     chapters:
-      - url: https://hyp3-docs.asf.alaska.edu/
-        title: HyP3 Documentation 
-      - url: https://search.asf.alaska.edu/
-        title: ASF Data Search (Vertex)
+      - file: HyP3/HyP3_resources.md
+        sections:
+        - url: https://hyp3-docs.asf.alaska.edu/
+          title: HyP3 Documentation 
+        - url: https://search.asf.alaska.edu/
+          title: ASF Data Search (Vertex)
+        - url: https://docs.asf.alaska.edu/vertex/manual/
+          title: ASF SAR Data Search User Manual
+        - url: https://github.com/asfadmin/Discovery-asf_search
+          title: asf_search Python Package
+        - url: https://github.com/ASFHyP3/hyp3-sdk
+          title: hyp3_sdk Python Package
+        - url: https://nbviewer.org/github/ASFHyP3/hyp3-sdk/blob/main/docs/sdk_example.ipynb
+          title: HyP3 On-Demand Processing, Programmatic Access Example
+        - url: https://storymaps.arcgis.com/stories/2ead3222d2294d1fae1d11d3f98d7c35
+          title: RTC On Demand! StoryMap
+        - url: https://storymaps.arcgis.com/stories/68a8a3253900411185ae9eb6bb5283d3
+          title: InSAR On Demand! StoryMap
       - file: HyP3/HyP3_data_access.md
         sections:
         - file: HyP3/hyp3_insar_permafrost.ipynb
@@ -50,8 +74,6 @@ parts:
     chapters:
       - url: https://opensarlab.asf.alaska.edu/
         title: ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)
-      - url: https://docs.asf.alaska.edu/vertex/manual/
-        title: ASF SAR Data Search User Manual
       - url: https://github.com/RadarCODE/awesome-sar
         title: awesome-sar GitHub Repo (Directory of SAR resources)
       - url: https://www.hdfgroup.org/downloads/hdfview/
@@ -60,5 +82,3 @@ parts:
         title: Miami InSAR Time-Series Software in Python (MintPy)
       - url: https://radar.community.uaf.edu/
         title: Microwave Remote Sensing Class Website, UAF, Dr. Franz Meyer
-
-
