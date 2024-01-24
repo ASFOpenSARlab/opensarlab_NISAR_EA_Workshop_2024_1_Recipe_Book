@@ -24,6 +24,8 @@ parts:
           title: isce-framework GitHub Org 
         - url: https://nisar.jpl.nasa.gov/data/sample-data/
           title: NISAR Sample Data Site
+        - url: https://gitlab.com/nisar-science-algorithms/solid-earth/ATBD
+          title: NISAR Solid Earth ATBD
         - url: https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/
           title: ARIA Sentinel-1 GUNW Information
       - file: NISAR/NISAR_sample_data.ipynb
