@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>HyP3 On-Demand GAMMA-InSAR, SBAS &#8212; OpenSARLab NISAR Early Adopter Workshop: 2024.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'HyP3/hyp3_insar_permafrost';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HyP3 Data Recipes" href="HyP3_data_recipes.html" />
+    <link rel="prev" title="HyP3 Data Access" href="HyP3_data_access.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASF_logo.svg" class="logo__image only-light" alt="OpenSARLab NISAR Early Adopter Workshop: 2024.1 - Home"/>
+    <script>document.write(`<img src="../_static/ASF_logo.svg" class="logo__image only-dark" alt="OpenSARLab NISAR Early Adopter Workshop: 2024.1 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    NISAR Early Adopter Workshop 2024.1 Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop Slides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1aXE2_k2QzRtSwQpkssZCbiT2WQ6spSU-Kzj6Ne9wVnk/edit?usp=sharing">NISAR Early Adopter Workshop 1 2024 Slides</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../environment/build_conda_env.html">Create Conda Environment Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NISAR</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../NISAR/NISAR_resources.html">NISAR Resources</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/">NISAR Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://asf.alaska.edu/nisar/">ASF NISAR Page</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/documents/26/NISAR_FINAL_9-6-19.pdf">NISAR Mission Science Users’ Handbook</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/engagement/early-adopters/">NISAR Early Adopters Program</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/isce-framework">isce-framework GitHub Org</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/data/sample-data/">NISAR Sample Data Site</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://gitlab.com/nisar-science-algorithms/solid-earth/ATBD">NISAR Solid Earth ATBD</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/">ARIA Sentinel-1 GUNW Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../NISAR/NISAR_sample_data.html">NISAR Sample Data Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NISAR/Calif_CentralValley_time_series.html">ARIA GUNW (NISAR-like) Data: InSAR Time Series Analysis with MintPy Notebook</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OPERA</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../OPERA/OPERA_resources.html">OPERA Resources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.jpl.nasa.gov/go/opera">OPERA Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/opera-adt">OPERA Algorithm Development Team GitHub Org</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/OPERA-Cal-Val/OPERA_Applications/tree/main">OPERA_Applications Repo (OPERA data recipes)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../OPERA/OPERA_data_access.html">OPERA Data Access</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../OPERA/search_download_OPERA-RTC-S1.html">OPERA RTC-S1 Data Access Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OPERA/search_download_OPERA-CSLC-S1.html">OPERA CSLC-S1 Data Access Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../OPERA/OPERA_data_recipes.html">OPERA Data Recipes</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../OPERA/OPERA_RTC_timeseries_snow.html">OPERA RTC-S1 Time-Series: Snow Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OPERA/OPERA-RTC-S1-time_series.html">OPERA RTC-S1 Coefficient of Variation: User Supplied Dataset Notebook</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ASF HyP3 On-Demand Processing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="HyP3_resources.html">ASF Data Search and HyP3 Resources</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/">HyP3 Documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://search.asf.alaska.edu/">ASF Data Search (Vertex)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF SAR Data Search User Manual</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/asfadmin/Discovery-asf_search">asf_search Python Package</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/asfadmin/Discovery-asf_search/tree/master/examples">asf_search Programmatic Access Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/ASFHyP3/hyp3-sdk">hyp3_sdk Python Package</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nbviewer.org/github/ASFHyP3/hyp3-sdk/blob/main/docs/sdk_example.ipynb">HyP3 On-Demand Processing, Programmatic Access Example</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://storymaps.arcgis.com/stories/2ead3222d2294d1fae1d11d3f98d7c35">RTC On Demand! StoryMap</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://storymaps.arcgis.com/stories/68a8a3253900411185ae9eb6bb5283d3">InSAR On Demand! StoryMap</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/burst_insar_product_guide/">HyP3 Sentinel-1 Burst InSAR, NOW AVAILABLE!</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="HyP3_data_access.html">HyP3 Data Access</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HyP3 On-Demand GAMMA-InSAR, SBAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="HyP3_data_recipes.html">HyP3 Data Recipes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.youtube.com/watch?v=tq8nZpsWK6k">MintPy SBAS Webinar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MintPy_sbas_permafrost_Alaska.html">Quantifying Permafrost-Related Ground Feformation with InSAR Time Series Using HyP3 Products and MintPy</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://asf.alaska.edu/">ASF Website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensarlab.asf.alaska.edu/">ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/RadarCODE/awesome-sar">awesome-sar GitHub Repo (Directory of SAR resources)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView Software</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/insarlab/MintPy">Miami InSAR Time-Series Software in Python (MintPy)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.earthscope.org/event/2023-insar-isce-short-course/">EarthScope InSAR Processing and Analysis (ISCE+) Short Course</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://radar.community.uaf.edu/">Microwave Remote Sensing Class Website, in-person and remote, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations">SAR Foundations, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/earth-sciences/university-of-alaska-fairbanks-synthetic-aperture-radar-hazards">SAR Hazards, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/ecosystems/university-of-alaska-fairbanks-synthetic-aperture-radar-ecosystems">SAR Ecosystems, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/burst_insar_product_guide/">HyP3 Sentinel-1 Burst InSAR, NOW AVAILABLE!</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FHyP3/hyp3_insar_permafrost.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/HyP3/hyp3_insar_permafrost.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HyP3 On-Demand GAMMA-InSAR, SBAS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-programmatic-access-of-asf-hyp3-on-demand-processing">Example: programmatic access of ASF HyP3 On-Demand Processing.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-parameters">Set parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-insar-pairs-with-asf-search">1. Select InSAR pairs with ASF Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-on-demand-insar-products-from-asf-hyp3">2. Request On Demand InSAR products from ASF HyP3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-all-geotiffs-to-aoi-with-common-overlap">3. Subset all GeoTIFFs to AOI with common overlap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-unused-files">Delete unused files</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hyp3-on-demand-gamma-insar-sbas">
+<h1>HyP3 On-Demand GAMMA-InSAR, SBAS<a class="headerlink" href="#hyp3-on-demand-gamma-insar-sbas" title="Permalink to this heading">#</a></h1>
+<section id="example-programmatic-access-of-asf-hyp3-on-demand-processing">
+<h2>Example: programmatic access of ASF HyP3 On-Demand Processing.<a class="headerlink" href="#example-programmatic-access-of-asf-hyp3-on-demand-processing" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Downloads interferograms from HyP3</p></li>
+</ul>
+<p><strong>Author:</strong> Jie Chen, University of Alaska Fairbanks</p>
+<blockquote>
+<div><p><strong>Example Only. Not Needed for Workshop.</strong></p>
+<ul class="simple">
+<li><p>This orders the interferograms used with the accompanying notebook, <code class="docutils literal notranslate"><span class="pre">MintPy_sbas_permafrost_Alaska.ipynb</span></code> (<u>Quantifying permafrost-related ground deformation with InSAR Time Series using HyP3 products and MintPy</u>).</p></li>
+<li><p>The dataset has already been processed and saved in an S3 bucket. The MintPy notebook uses the pre-staged dataset, so it is not necessary to run this notebook.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Adapt this code to order SBAS stacks over your area of interest.</strong></p>
+<section id="set-parameters">
+<h3>Set parameters<a class="headerlink" href="#set-parameters" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">dateutil.parser</span> <span class="kn">import</span> <span class="n">parse</span> <span class="k">as</span> <span class="n">parse_date</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+<span class="kn">import</span> <span class="nn">asf_search</span> <span class="k">as</span> <span class="nn">asf</span>
+<span class="kn">import</span> <span class="nn">hyp3_sdk</span> <span class="k">as</span> <span class="nn">sdk</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="select-insar-pairs-with-asf-search">
+<h2>1. Select InSAR pairs with ASF Search<a class="headerlink" href="#select-insar-pairs-with-asf-search" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a project name</span>
+<span class="n">project_name</span> <span class="o">=</span> <span class="s1">&#39;AK_P15D_2021-2022&#39;</span>
+<span class="n">work_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">work_dir</span> <span class="o">/</span> <span class="s1">&#39;insar_data&#39;</span>
+
+<span class="c1"># Define the dataset parameters</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2021-06-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2022-10-01&#39;</span>
+<span class="n">max_temporal_baseline</span> <span class="o">=</span> <span class="mi">36</span>  <span class="c1"># days</span>
+<span class="n">interannual_baseline_max</span> <span class="o">=</span> <span class="mi">380</span>
+<span class="n">interannual_baseline_min</span> <span class="o">=</span> <span class="mi">350</span>
+<span class="n">look_nums</span> <span class="o">=</span> <span class="s1">&#39;20x4&#39;</span>     <span class="c1"># Range x Azimuth looks</span>
+<span class="n">phase_filter_para</span> <span class="o">=</span> <span class="mf">0.8</span>   <span class="c1"># Exponent parameters for adaptive filter before phase unwrapping</span>
+<span class="n">overlap</span> <span class="o">=</span> <span class="p">[</span><span class="mf">516000.000</span><span class="p">,</span> <span class="mf">7535000.000</span><span class="p">,</span> <span class="mf">526000.000</span><span class="p">,</span> <span class="mf">7525000.000</span><span class="p">]</span>   <span class="c1"># AOI with common overlap</span>
+
+<span class="c1"># Set the polygons</span>
+<span class="n">wkt</span> <span class="o">=</span> <span class="s1">&#39;POLYGON((-164.5341 67.8529,-164.2322 67.8529,-164.2322 67.9293,-164.5341 67.9293,-164.5341 67.8529))&#39;</span>   <span class="c1"># Get from ASF AOI</span>
+
+<span class="n">stack_start</span> <span class="o">=</span> <span class="n">parse_date</span><span class="p">(</span><span class="n">start_date</span> <span class="o">+</span> <span class="s1">&#39; 00:00:00Z&#39;</span><span class="p">)</span>
+<span class="n">stack_end</span> <span class="o">=</span> <span class="n">parse_date</span><span class="p">(</span><span class="n">end_date</span> <span class="o">+</span> <span class="s1">&#39; 00:00:00Z&#39;</span><span class="p">)</span>
+<span class="n">year_start</span> <span class="o">=</span> <span class="n">stack_start</span><span class="o">.</span><span class="n">year</span>
+<span class="n">year_end</span> <span class="o">=</span> <span class="n">stack_end</span><span class="o">.</span><span class="n">year</span>
+<span class="n">season_period</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_date</span><span class="p">[</span><span class="mi">5</span><span class="p">:],</span> <span class="n">end_date</span><span class="p">[</span><span class="mi">5</span><span class="p">:]]</span>
+
+<span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All options to geo_search() can be specified using kwargs, which also allows them to be handled using a dictionary.</span>
+<span class="n">opts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;platform&#39;</span><span class="p">:</span> <span class="n">asf</span><span class="o">.</span><span class="n">SENTINEL1</span><span class="p">,</span>
+    <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="n">start_date</span><span class="p">,</span>
+    <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="n">end_date</span><span class="p">,</span>
+    <span class="s1">&#39;processingLevel&#39;</span><span class="p">:</span> <span class="n">asf</span><span class="o">.</span><span class="n">SLC</span><span class="p">,</span>
+    <span class="s1">&#39;beamMode&#39;</span><span class="p">:</span> <span class="n">asf</span><span class="o">.</span><span class="n">IW</span><span class="p">,</span>
+    <span class="s1">&#39;flightDirection&#39;</span><span class="p">:</span> <span class="n">asf</span><span class="o">.</span><span class="n">DESCENDING</span><span class="p">,</span>
+    <span class="s1">&#39;relativeOrbit&#39;</span><span class="p">:</span> <span class="mi">15</span>
+<span class="p">}</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">asf</span><span class="o">.</span><span class="n">geo_search</span><span class="p">(</span>
+        <span class="n">intersectsWith</span><span class="o">=</span><span class="n">wkt</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">opts</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroid</span> <span class="o">=</span> <span class="n">search_results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">centroid</span><span class="p">()</span><span class="o">.</span><span class="n">wkt</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">centroid</span><span class="p">)</span>
+<span class="n">centroid_results</span> <span class="o">=</span> <span class="n">asf</span><span class="o">.</span><span class="n">geo_search</span><span class="p">(</span><span class="n">intersectsWith</span><span class="o">=</span><span class="n">centroid</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">)</span>
+<span class="n">search_results</span> <span class="o">=</span> <span class="n">centroid_results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">)</span><span class="si">}</span><span class="s1"> SLC images found&#39;</span><span class="p">)</span>
+<span class="c1"># print(search_results[0])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>POINT (-165.05558675728977 67.33204179507277)
+41 SLC images found
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">baseline_results</span> <span class="o">=</span> <span class="n">asf</span><span class="o">.</span><span class="n">baseline_search</span><span class="o">.</span><span class="n">stack_from_product</span><span class="p">(</span><span class="n">search_results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">baseline_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">+</span> <span class="p">[</span><span class="n">scene</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="p">]</span> <span class="k">for</span> <span class="n">scene</span> <span class="ow">in</span> <span class="n">baseline_results</span><span class="p">]</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">stack</span><span class="p">[</span><span class="s1">&#39;startTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">startTime</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">parse_date</span><span class="p">)</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">stack_start</span> <span class="o">&lt;=</span> <span class="n">stack</span><span class="o">.</span><span class="n">startTime</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">startTime</span> <span class="o">&lt;=</span> <span class="n">stack_end</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct interferometric pairs</span>
+<span class="n">stack_season</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">year_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year_start</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">year_end</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">season_start</span> <span class="o">=</span> <span class="n">parse_date</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">year_index</span><span class="p">)</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">season_period</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> 00:00:00Z&#39;</span><span class="p">)</span>
+    <span class="n">season_end</span> <span class="o">=</span> <span class="n">parse_date</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">year_index</span><span class="p">)</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">season_period</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1"> 00:00:00Z&#39;</span><span class="p">)</span>
+    <span class="n">stack_season</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stack_season</span><span class="p">,</span> <span class="n">stack</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">season_start</span> <span class="o">&lt;=</span> <span class="n">stack</span><span class="o">.</span><span class="n">startTime</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">startTime</span> <span class="o">&lt;=</span> <span class="n">season_end</span><span class="p">)]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total SAR sences are:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">startTime</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">stack_season</span><span class="o">.</span><span class="n">startTime</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>   <span class="c1"># or stack_season[&#39;startTime&#39;].values</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total SAR sences are: 21
+2021-06-07T17:33:39.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-06-19T17:33:40.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-07-01T17:33:41.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-07-13T17:33:41.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-07-25T17:33:42.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-08-06T17:33:43.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-08-18T17:33:43.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-08-30T17:33:44.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-09-11T17:33:45.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2021-09-23T17:33:45.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-06-02T17:33:45.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-06-14T17:33:46.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-06-26T17:33:47.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-07-08T17:33:47.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-07-20T17:33:48.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-08-01T17:33:49.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-08-13T17:33:50.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-08-25T17:33:50.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-09-06T17:33:51.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-09-18T17:33:51.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+2022-09-30T17:33:51.000000000 &lt;class &#39;numpy.datetime64&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construct the seasonal and inter-annual pairs. You can modify the networking strategies.</span>
+<span class="n">sbas_pairs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c1"># For adjacent interferogram pair search</span>
+<span class="n">sbas_pairs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The seasonal interferometric pairs are (reference-secondary): &#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">reference</span><span class="p">,</span> <span class="n">rt</span> <span class="ow">in</span> <span class="n">stack_season</span><span class="o">.</span><span class="n">loc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sceneName&#39;</span><span class="p">,</span> <span class="s1">&#39;temporalBaseline&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">secondaries</span> <span class="o">=</span> <span class="n">stack_season</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">sceneName</span> <span class="o">!=</span> <span class="n">reference</span><span class="p">)</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">temporalBaseline</span> <span class="o">-</span> <span class="n">rt</span> <span class="o">&lt;=</span> <span class="n">max_temporal_baseline</span><span class="p">)</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">temporalBaseline</span> <span class="o">-</span> <span class="n">rt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">secondary</span> <span class="ow">in</span> <span class="n">secondaries</span><span class="o">.</span><span class="n">sceneName</span><span class="p">:</span>
+        <span class="n">sbas_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">reference</span><span class="p">,</span> <span class="n">secondary</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">reference</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">25</span><span class="p">],</span> <span class="n">secondary</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">25</span><span class="p">])</span>
+
+<span class="c1"># For inter-annual pairs</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The inter-annual interferometric pairs are (reference-secondary): &#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">reference</span><span class="p">,</span> <span class="n">rt</span> <span class="ow">in</span> <span class="n">stack_season</span><span class="o">.</span><span class="n">loc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;sceneName&#39;</span><span class="p">,</span> <span class="s1">&#39;temporalBaseline&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># print(reference, rt)</span>
+    <span class="n">secondaries</span> <span class="o">=</span> <span class="n">stack_season</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">sceneName</span> <span class="o">!=</span> <span class="n">reference</span><span class="p">)</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">temporalBaseline</span> <span class="o">-</span> <span class="n">rt</span> <span class="o">&lt;=</span> <span class="n">interannual_baseline_max</span><span class="p">)</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">stack_season</span><span class="o">.</span><span class="n">temporalBaseline</span> <span class="o">-</span> <span class="n">rt</span> <span class="o">&gt;</span> <span class="n">interannual_baseline_min</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">secondary</span> <span class="ow">in</span> <span class="n">secondaries</span><span class="o">.</span><span class="n">sceneName</span><span class="p">:</span>
+        <span class="n">sbas_pairs</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">reference</span><span class="p">,</span> <span class="n">secondary</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">reference</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">25</span><span class="p">],</span> <span class="n">secondary</span><span class="p">[</span><span class="mi">17</span><span class="p">:</span><span class="mi">25</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The total number of interferometric pairs are: &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sbas_pairs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The seasonal interferometric pairs are (reference-secondary): 
+20220918 20220930
+20220906 20220918
+20220906 20220930
+20220825 20220906
+20220825 20220918
+20220825 20220930
+20220813 20220825
+20220813 20220906
+20220813 20220918
+20220801 20220813
+20220801 20220825
+20220801 20220906
+20220720 20220801
+20220720 20220813
+20220720 20220825
+20220708 20220720
+20220708 20220801
+20220708 20220813
+20220626 20220708
+20220626 20220720
+20220626 20220801
+20220614 20220626
+20220614 20220708
+20220614 20220720
+20220602 20220614
+20220602 20220626
+20220602 20220708
+20210911 20210923
+20210830 20210911
+20210830 20210923
+20210818 20210830
+20210818 20210911
+20210818 20210923
+20210806 20210818
+20210806 20210830
+20210806 20210911
+20210725 20210806
+20210725 20210818
+20210725 20210830
+20210713 20210725
+20210713 20210806
+20210713 20210818
+20210701 20210713
+20210701 20210725
+20210701 20210806
+20210619 20210701
+20210619 20210713
+20210619 20210725
+20210607 20210619
+20210607 20210701
+20210607 20210713
+The inter-annual interferometric pairs are (reference-secondary): 
+20210923 20220918
+20210923 20220930
+20210911 20220906
+20210911 20220918
+20210830 20220825
+20210830 20220906
+20210818 20220813
+20210818 20220825
+20210806 20220801
+20210806 20220813
+20210725 20220720
+20210725 20220801
+20210713 20220708
+20210713 20220720
+20210701 20220626
+20210701 20220708
+20210619 20220614
+20210619 20220626
+20210607 20220602
+20210607 20220614
+The total number of interferometric pairs are:  71
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="request-on-demand-insar-products-from-asf-hyp3">
+<h2>2. Request On Demand InSAR products from ASF HyP3<a class="headerlink" href="#request-on-demand-insar-products-from-asf-hyp3" title="Permalink to this heading">#</a></h2>
+<p>Use your <a class="reference external" href="https://urs.earthdata.nasa.gov/">NASA Earthdata login</a> to connect to <a class="reference external" href="https://hyp3-docs.asf.alaska.edu/">ASF HyP3</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hyp3</span> <span class="o">=</span> <span class="n">sdk</span><span class="o">.</span><span class="n">HyP3</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sdk</span><span class="o">.</span><span class="n">version</span><span class="p">(</span><span class="s1">&#39;hyp3_sdk&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jobs</span> <span class="o">=</span> <span class="n">sdk</span><span class="o">.</span><span class="n">Batch</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 HyP3 Jobs: 0 succeeded, 0 failed, 0 running, 0 pending.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the interferogram parameters here</span>
+<span class="c1"># This step will submit the HyP3 InSAR job! Be careful!</span>
+<span class="c1"># The code will not check if the project is exist or not. </span>
+<span class="k">for</span> <span class="n">reference</span><span class="p">,</span> <span class="n">secondary</span> <span class="ow">in</span> <span class="n">sbas_pairs</span><span class="p">:</span>
+    <span class="n">jobs</span> <span class="o">+=</span> <span class="n">hyp3</span><span class="o">.</span><span class="n">submit_insar_job</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">secondary</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">project_name</span><span class="p">,</span>
+                                  <span class="n">include_wrapped_phase</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">apply_water_mask</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                  <span class="n">include_dem</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">include_look_vectors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                 <span class="n">looks</span><span class="o">=</span><span class="n">look_nums</span><span class="p">,</span> <span class="n">phase_filter_parameter</span><span class="o">=</span><span class="n">phase_filter_para</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jobs</span> <span class="o">=</span> <span class="n">hyp3</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "770f8b2951784516856be7cbcda134ea", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jobs</span> <span class="o">=</span> <span class="n">hyp3</span><span class="o">.</span><span class="n">find_jobs</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">project_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jobs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71 HyP3 Jobs: 71 succeeded, 0 failed, 0 running, 0 pending.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if all the jobs are succeeded.</span>
+<span class="c1"># jobs_failed = jobs.filter_jobs(succeeded=False, running=False, failed=True, include_expired=False)</span>
+<span class="c1"># print(jobs)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27 HyP3 Jobs: 27 succeeded, 0 failed, 0 running, 0 pending.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="subset-all-geotiffs-to-aoi-with-common-overlap">
+<h2>3. Subset all GeoTIFFs to AOI with common overlap<a class="headerlink" href="#subset-all-geotiffs-to-aoi-with-common-overlap" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clip HyP3 geotiff products to user-defined AOI</span>
+<span class="k">def</span> <span class="nf">clip_hyp3_products_to_AOI</span><span class="p">(</span><span class="n">data_path</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">],</span> <span class="n">overlap</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clip all GeoTIFF files to AOI with common overlap</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data_dir:</span>
+<span class="sd">            directory containing the GeoTIFF files to clip</span>
+<span class="sd">        overlap:</span>
+<span class="sd">            a list of the upper-left x, upper-left y, lower-right-x, and lower-tight y</span>
+<span class="sd">            corner coordinates of AOI</span>
+<span class="sd">    Returns: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">files_for_mintpy</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_water_mask.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_corr.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_unw_phase.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_wrapped_phase.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_dem.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_lv_theta.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_lv_phi.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_amp.tif&#39;</span><span class="p">]</span>
+    <span class="n">files_del</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;amp.tif&quot;</span><span class="p">,</span><span class="s2">&quot;corr.tif&quot;</span><span class="p">,</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span><span class="s2">&quot;phi.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;theta.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;phase.tif&quot;</span><span class="p">,</span> <span class="s1">&#39;mask.tif&#39;</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">extension</span> <span class="ow">in</span> <span class="n">files_for_mintpy</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">data_path</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+            <span class="n">dst_file</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s1">_clip</span><span class="si">{</span><span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="n">gdal</span><span class="o">.</span><span class="n">Translate</span><span class="p">(</span><span class="n">destName</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">dst_file</span><span class="p">),</span> <span class="n">srcDS</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">),</span> <span class="n">projWin</span><span class="o">=</span><span class="n">overlap</span><span class="p">)</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download and clip hyp3 products one-by-one.</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">jobs</span><span class="p">)):</span>
+    <span class="n">job</span> <span class="o">=</span> <span class="n">jobs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">insar_product</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">download_files</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+    <span class="n">product_dir</span> <span class="o">=</span> <span class="n">sdk</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">extract_zipped_product</span><span class="p">(</span><span class="n">insar_product</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">clip_hyp3_products_to_AOI</span><span class="p">(</span><span class="n">product_dir</span><span class="p">,</span> <span class="n">overlap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5f2f4ae1e969463aa993f7143dbfe181", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "603bc4b8daf042a6aa7b2b8df4d92a77", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b6a877d0728c402a9c6c0c62ca664bb1", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "5d8f9081122d476e939adaa403526d2a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "bfab9a3a4dc44b9e89e1471aa7010abc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "da470f43733f4242b82c0917c3462ea9", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d5e7d69398084837aa5749e98a0e79ef", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "327b5e9ad5d64fc9981f8221c5d5f0aa", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "de9b8c7c06e84cb6b6da498eb294cc4e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4327377bd04a4814a9a4788e3317da09", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "bd75606d32ac431cb5e68145dfc376fd", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "fbdf82b1e6ab44aa91eb666e79d75091", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "5b64ae5048894bd59a5bf9b3c302aaa3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f79fca0923b84cff8d657eac4cf362bf", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c0446b6fae7a46038152e2e16b8d73c5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "0257cc94362d4e1f8f0e62edb3408487", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cfed53c10f2f4015853fef6c103486a3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cc3e96bb1a5f4078bb4a060eacf83be9", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7b051903ff094cb8b8ba4185fea128dd", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b34b16e255d74d27931274f7937fe33d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7e2c747d64e54041adb5be3dfefa064e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "0d3c4fadde3949ff84ca3e94c65461cf", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f45fd879ff3746a6b5bee05ae9149fa4", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e77332556e164986948f6627c68cb01c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8e0c77581f53496488e3cbde18a0c82a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "bd47914720b5471ba1b12d6c277dbf60", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "392e324fd5704be3bacc8a00692fc4fa", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "627f1378c1a84b4890ff773d0de0c9f6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "16456de4374040aba3721af606f54c6a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f73e74d2e0034b8a98aeaa3545802ef9", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "128c61b3c34941cfb2bc9d8df9607c6a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "fbb991c7edac47ef827c896f254f9af3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d4ec58c35310489bbd450422e7fb2ed0", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "921105b84bbc49cbb44ca78afa71f29d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7514d7ca79894733a6f74dcc5983a1ad", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "310b4e03d7814a30ac98d4035a5027e6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e9b2a381da8b4e87b0df42a5db2c5377", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "723d989d611944b9aa894fecf80dbe4e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "3785ccea4cdf4ea8bd1b9e393cded154", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d77045d5082647a69420d6f809b9a917", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4f50690a21ef47efb78cccafdfe15571", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "58405b82ee5d4cc0b1fd73eb7c335ae8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "edf71cf8270549e89f81982cf36a71ff", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "da00198dba19418fab789b12322ba6c8", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9f6e781ec9164ceebd6f363c7086897c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "fcc92e3c026340ef92094bb7ef9d644a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "599f7bc8ee874ca694dc0ea8eb515e5c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "08ea646d72a740669c95a6c6dac6da47", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1892725f0d724726b0573e072bc78668", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7f42c11b5fb74b01b52b656551fd4fa4", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4453e5333a2b4242bb0cf2361683e19a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1adffde5d8ac447a8a1d6ef4da1d8b5f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c6fd9e9d9c704dd79c3f639437f9c7d6", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d3bfa70730fe4e379a750e33f32d1d22", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9526c5a7e95c485fac70e55dde7e6dbc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d71ec03bbf4c4609a18fe74393fdc59e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "63630f58ea6c41eda9aa1e01b9f7845c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "aa0417827a3141829541717975993c37", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "3044a73cf7344a61a9a6543ff0ea75d2", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f5b58274d340402e873c515df5baed12", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a86e3e95905a42eb9760a93a1c63246d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9b4aebac113047deb9938deaebf1e5aa", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "41bd735ee78044dea6a09ce20cdfe0c2", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "69bce610b952403daebb19914af63b83", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7d576646483148f9a242e5592bad361f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "704f64bf09e5409b9ee10f54bb078653", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7cfb85c6d1ff4cc4ac9a76daf51ab21d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9a46ff4fbea646858c724ef312ec9c76", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b4a2687afe2f4852ad3795f2d9cbf48f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "fcb25535431c44be99da6a4a9c6b7ab1", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "5a37fb447239488699761eedb01f0d44", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<section id="delete-unused-files">
+<h3>Delete unused files<a class="headerlink" href="#delete-unused-files" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;xml&quot;</span><span class="p">,</span><span class="s2">&quot;png&quot;</span><span class="p">,</span><span class="s2">&quot;kmz&quot;</span><span class="p">,</span><span class="s2">&quot;md.txt&quot;</span><span class="p">]:</span>
+    <span class="n">unneeded_files</span> <span class="o">=</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*/*.</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">unneeded_files</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;amp.tif&quot;</span><span class="p">,</span><span class="s2">&quot;corr.tif&quot;</span><span class="p">,</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span><span class="s2">&quot;phi.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;theta.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;phase.tif&quot;</span><span class="p">,</span> <span class="s1">&#39;mask.tif&#39;</span><span class="p">]:</span>
+    <span class="n">unneeded_files</span> <span class="o">=</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;*/*</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">unneeded_files</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-.local-NISAR_EA_Workshop_2024_1-py"
+        },
+        kernelOptions: {
+            name: "conda-env-.local-NISAR_EA_Workshop_2024_1-py",
+            path: "./HyP3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-.local-NISAR_EA_Workshop_2024_1-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HyP3_data_access.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HyP3 Data Access</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HyP3_data_recipes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HyP3 Data Recipes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-programmatic-access-of-asf-hyp3-on-demand-processing">Example: programmatic access of ASF HyP3 On-Demand Processing.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-parameters">Set parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-insar-pairs-with-asf-search">1. Select InSAR pairs with ASF Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-on-demand-insar-products-from-asf-hyp3">2. Request On Demand InSAR products from ASF HyP3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-all-geotiffs-to-aoi-with-common-overlap">3. Subset all GeoTIFFs to AOI with common overlap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete-unused-files">Delete unused files</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Alaska Satellite Facility
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

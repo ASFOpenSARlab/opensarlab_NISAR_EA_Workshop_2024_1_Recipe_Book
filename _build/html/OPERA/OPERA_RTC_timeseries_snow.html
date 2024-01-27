@@ -1,0 +1,1366 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>OPERA RTC-S1 Time-Series: Snow Example &#8212; OpenSARLab NISAR Early Adopter Workshop: 2024.1</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'OPERA/OPERA_RTC_timeseries_snow';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OPERA RTC-S1 Coefficient of Variation: User Supplied Dataset Notebook" href="OPERA-RTC-S1-time_series.html" />
+    <link rel="prev" title="OPERA Data Recipes" href="OPERA_data_recipes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/ASF_logo.svg" class="logo__image only-light" alt="OpenSARLab NISAR Early Adopter Workshop: 2024.1 - Home"/>
+    <script>document.write(`<img src="../_static/ASF_logo.svg" class="logo__image only-dark" alt="OpenSARLab NISAR Early Adopter Workshop: 2024.1 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    NISAR Early Adopter Workshop 2024.1 Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop Slides</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1aXE2_k2QzRtSwQpkssZCbiT2WQ6spSU-Kzj6Ne9wVnk/edit?usp=sharing">NISAR Early Adopter Workshop 1 2024 Slides</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../environment/build_conda_env.html">Create Conda Environment Notebook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NISAR</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../NISAR/NISAR_resources.html">NISAR Resources</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/">NISAR Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://asf.alaska.edu/nisar/">ASF NISAR Page</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/documents/26/NISAR_FINAL_9-6-19.pdf">NISAR Mission Science Users’ Handbook</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/engagement/early-adopters/">NISAR Early Adopters Program</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/isce-framework">isce-framework GitHub Org</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nisar.jpl.nasa.gov/data/sample-data/">NISAR Sample Data Site</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://gitlab.com/nisar-science-algorithms/solid-earth/ATBD">NISAR Solid Earth ATBD</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://asf.alaska.edu/data-sets/derived-data-sets/sentinel-1-interferograms/">ARIA Sentinel-1 GUNW Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../NISAR/NISAR_sample_data.html">NISAR Sample Data Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NISAR/Calif_CentralValley_time_series.html">ARIA GUNW (NISAR-like) Data: InSAR Time Series Analysis with MintPy Notebook</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OPERA</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="OPERA_resources.html">OPERA Resources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.jpl.nasa.gov/go/opera">OPERA Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/opera-adt">OPERA Algorithm Development Team GitHub Org</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/OPERA-Cal-Val/OPERA_Applications/tree/main">OPERA_Applications Repo (OPERA data recipes)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="OPERA_data_access.html">OPERA Data Access</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="search_download_OPERA-RTC-S1.html">OPERA RTC-S1 Data Access Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_download_OPERA-CSLC-S1.html">OPERA CSLC-S1 Data Access Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="OPERA_data_recipes.html">OPERA Data Recipes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">OPERA RTC-S1 Time-Series: Snow Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OPERA-RTC-S1-time_series.html">OPERA RTC-S1 Coefficient of Variation: User Supplied Dataset Notebook</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ASF HyP3 On-Demand Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../HyP3/HyP3_resources.html">ASF Data Search and HyP3 Resources</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/">HyP3 Documentation</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://search.asf.alaska.edu/">ASF Data Search (Vertex)</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.asf.alaska.edu/vertex/manual/">ASF SAR Data Search User Manual</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/asfadmin/Discovery-asf_search">asf_search Python Package</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/asfadmin/Discovery-asf_search/tree/master/examples">asf_search Programmatic Access Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/ASFHyP3/hyp3-sdk">hyp3_sdk Python Package</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nbviewer.org/github/ASFHyP3/hyp3-sdk/blob/main/docs/sdk_example.ipynb">HyP3 On-Demand Processing, Programmatic Access Example</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://storymaps.arcgis.com/stories/2ead3222d2294d1fae1d11d3f98d7c35">RTC On Demand! StoryMap</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://storymaps.arcgis.com/stories/68a8a3253900411185ae9eb6bb5283d3">InSAR On Demand! StoryMap</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/burst_insar_product_guide/">HyP3 Sentinel-1 Burst InSAR, NOW AVAILABLE!</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../HyP3/HyP3_data_access.html">HyP3 Data Access</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../HyP3/hyp3_insar_permafrost.html">HyP3 On-Demand GAMMA-InSAR, SBAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../HyP3/HyP3_data_recipes.html">HyP3 Data Recipes</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference external" href="https://www.youtube.com/watch?v=tq8nZpsWK6k">MintPy SBAS Webinar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HyP3/MintPy_sbas_permafrost_Alaska.html">Quantifying Permafrost-Related Ground Feformation with InSAR Time Series Using HyP3 Products and MintPy</a></li>
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://asf.alaska.edu/">ASF Website</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://opensarlab.asf.alaska.edu/">ASF OpenScienceLab (Jupyter-based Cloud Computing Environments)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/RadarCODE/awesome-sar">awesome-sar GitHub Repo (Directory of SAR resources)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.hdfgroup.org/downloads/hdfview/">HDFView Software</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/insarlab/MintPy">Miami InSAR Time-Series Software in Python (MintPy)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.earthscope.org/event/2023-insar-isce-short-course/">EarthScope InSAR Processing and Analysis (ISCE+) Short Course</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://radar.community.uaf.edu/">Microwave Remote Sensing Class Website, in-person and remote, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/data-analysis/university-of-alaska-fairbanks-synthetic-aperture-radar-foundations">SAR Foundations, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/earth-sciences/university-of-alaska-fairbanks-synthetic-aperture-radar-hazards">SAR Hazards, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.edx.org/learn/ecosystems/university-of-alaska-fairbanks-synthetic-aperture-radar-ecosystems">SAR Ecosystems, Online edX class, UAF, Dr. Franz Meyer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://hyp3-docs.asf.alaska.edu/guides/burst_insar_product_guide/">HyP3 Sentinel-1 Burst InSAR, NOW AVAILABLE!</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FOPERA/OPERA_RTC_timeseries_snow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/OPERA/OPERA_RTC_timeseries_snow.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>OPERA RTC-S1 Time-Series: Snow Example</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-needed-python-packages">1. Import needed Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-with-asf-search-and-start-a-session">2. Authenticate with asf_search and start a session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-directory-in-which-to-download-the-rtcs">3. Create a directory in which to download the RTCs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtain-opera-products-using-a-burst-id">4. Obtain OPERA products using a Burst ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-metadata-for-accessing-the-image-stack">5. Create metadata for accessing the image stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-sar-data-stack-to-see-the-data">6. Open the SAR data stack to see the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-mask-file">7. Load the mask file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-onset-of-snow-melt">8. Identify the onset of snow melt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trying-several-other-years-and-or-burst-ids">10. Trying several other years and/or burst IDs</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="opera-rtc-s1-time-series-snow-example">
+<h1>OPERA RTC-S1 Time-Series: Snow Example<a class="headerlink" href="#opera-rtc-s1-time-series-snow-example" title="Permalink to this heading">#</a></h1>
+<section id="import-needed-python-packages">
+<h2>1. Import needed Python packages<a class="headerlink" href="#import-needed-python-packages" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">getpass</span> <span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">import</span> <span class="nn">opensarlab_lib</span> <span class="k">as</span> <span class="nn">osl</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdal</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">asf_search</span> <span class="k">as</span> <span class="nn">disco</span>
+<span class="kn">from</span> <span class="nn">asf_search.download.file_download_type</span> <span class="kn">import</span> <span class="n">FileDownloadType</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define a couple functions that will be used later</span>
+
+<span class="k">def</span> <span class="nf">timediff</span><span class="p">(</span><span class="n">time1</span><span class="p">,</span><span class="n">time2</span><span class="p">,</span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;days&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;time difference between time2 and time1 expressed as either days or seconds.</span>
+<span class="sd">    inputs must be in numpy datetime format.&#39;&#39;&#39;</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">time2</span><span class="o">-</span><span class="n">time1</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">==</span><span class="s1">&#39;seconds&#39;</span><span class="p">:</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">seconds</span><span class="o">+</span><span class="n">diff</span><span class="o">.</span><span class="n">days</span><span class="o">*</span><span class="mi">86400</span>
+    <span class="k">elif</span> <span class="n">form</span><span class="o">==</span><span class="s1">&#39;days&#39;</span><span class="p">:</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">seconds</span><span class="o">/</span><span class="mi">86400</span><span class="o">+</span><span class="n">diff</span><span class="o">.</span><span class="n">days</span>
+    <span class="k">return</span> <span class="n">diff</span>
+
+<span class="k">def</span> <span class="nf">dB</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;convert power scale image to dB&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="authenticate-with-asf-search-and-start-a-session">
+<h2>2. Authenticate with asf_search and start a session<a class="headerlink" href="#authenticate-with-asf-search-and-start-a-session" title="Permalink to this heading">#</a></h2>
+<p><strong>Gather credentials for authentication with Earth Data Login</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your EDL username&quot;</span><span class="p">)</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter your EDL password&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p><strong>Start an asf_search session</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">user_pass_session</span> <span class="o">=</span> <span class="n">disco</span><span class="o">.</span><span class="n">ASFSession</span><span class="p">()</span><span class="o">.</span><span class="n">auth_with_creds</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">disco</span><span class="o">.</span><span class="n">ASFAuthenticationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Auth failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Success!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Success!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-directory-in-which-to-download-the-rtcs">
+<h2>3. Create a directory in which to download the RTCs<a class="headerlink" href="#create-a-directory-in-which-to-download-the-rtcs" title="Permalink to this heading">#</a></h2>
+<p><strong>Create a data directory alongside the Jupyter Book containing this notebook</strong></p>
+<p>We are looking at the Hayes range so I will name it “hayes” here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the name of a directory to create, which will hold your downloaded RTCs&quot;</span><span class="p">)</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">name</span>
+<span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Directory: </span><span class="si">{</span><span class="n">data_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Directory: /home/jovyan/hayes
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="obtain-opera-products-using-a-burst-id">
+<h2>4. Obtain OPERA products using a Burst ID<a class="headerlink" href="#obtain-opera-products-using-a-burst-id" title="Permalink to this heading">#</a></h2>
+<p>The Burst ID is used to identify all images for a specific repeat orbit. The easiest way to identify a burst ID you want to use is using the ASF search webpage: <a class="reference external" href="https://search.asf.alaska.edu/#/">https://search.asf.alaska.edu/#/</a></p>
+<p>For this tutorial we are using the a burst that cover the eastern part of the Hayes Range, including the Black Rapids Glacier. The Burst ID we will use is <code class="docutils literal notranslate"><span class="pre">T094_200134_IW2</span></code></p>
+<p><img alt="Mt._Hayes_and_the_eastern_Alaska_Range_mountains.jpg" src="OPERA/attachment:8fbd69ab-688e-454a-b84e-e8675d5511a7.jpg" /> Eastern Hayes Range, as seen from the South. Mount Hayes is the tallest peak in this image (13,832 ft).</p>
+<p>We will use the burst information alone to identify and download all images for a given year.</p>
+<p>This is not the only way to search and find SAR data to use. See the OPERA Data Access notebooks for information on how to download these tools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="n">burstID</span> <span class="o">=</span> <span class="s1">&#39;T094_200134_IW2&#39;</span>
+<span class="c1"># burstID = &#39;T160_342216_IW2&#39;</span>
+<span class="c1"># burstID = &#39;T160_342215_IW2&#39;</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;OPERA-S1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;start&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">-01-01T00:00:00Z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;end&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">-01-01T00:00:00Z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;operaBurstID&#39;</span><span class="p">:</span> <span class="n">burstID</span><span class="p">,</span>
+    <span class="s1">&#39;processingLevel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;RTC&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;maxResults&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span>
+<span class="p">}</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">disco</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> images&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 29 images
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Bonus: print out result properties</span>
+<span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;beamModeType&#39;: &#39;IW&#39;,
+ &#39;browse&#39;: [&#39;https://datapool.asf.alaska.edu/BROWSE/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE.png&#39;,
+  &#39;s3://asf-cumulus-prod-opera-browse/OPERA_L2_RTC-S1_CALVAL/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE.png&#39;,
+  &#39;https://datapool.asf.alaska.edu/BROWSE/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE_low-res.png&#39;,
+  &#39;s3://asf-cumulus-prod-opera-browse/OPERA_L2_RTC-S1_CALVAL/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE_low-res.png&#39;,
+  &#39;https://datapool.asf.alaska.edu/BROWSE/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE_thumbnail.png&#39;,
+  &#39;s3://asf-cumulus-prod-opera-browse/OPERA_L2_RTC-S1_CALVAL/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_BROWSE_thumbnail.png&#39;],
+ &#39;bytes&#39;: None,
+ &#39;centerLat&#39;: None,
+ &#39;centerLon&#39;: None,
+ &#39;faradayRotation&#39;: None,
+ &#39;fileID&#39;: &#39;OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0&#39;,
+ &#39;flightDirection&#39;: &#39;ASCENDING&#39;,
+ &#39;groupID&#39;: &#39;S1B_IWDV_0204_0211_024795_094&#39;,
+ &#39;granuleType&#39;: None,
+ &#39;insarStackId&#39;: None,
+ &#39;md5sum&#39;: None,
+ &#39;offNadirAngle&#39;: None,
+ &#39;orbit&#39;: 24795,
+ &#39;pathNumber&#39;: 94,
+ &#39;platform&#39;: &#39;Sentinel-1B&#39;,
+ &#39;pointingAngle&#39;: None,
+ &#39;polarization&#39;: [&#39;VV&#39;, &#39;VH&#39;],
+ &#39;processingDate&#39;: &#39;2023-09-28T23:50:08Z&#39;,
+ &#39;processingLevel&#39;: &#39;RTC&#39;,
+ &#39;sceneName&#39;: &#39;OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0&#39;,
+ &#39;sensor&#39;: &#39;C-SAR&#39;,
+ &#39;startTime&#39;: &#39;2020-12-21T03:20:17Z&#39;,
+ &#39;stopTime&#39;: &#39;2020-12-21T03:20:20Z&#39;,
+ &#39;url&#39;: &#39;https://datapool.asf.alaska.edu/RTC/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_VH.tif&#39;,
+ &#39;pgeVersion&#39;: &#39;2.0.1&#39;,
+ &#39;fileName&#39;: &#39;OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_VH.tif&#39;,
+ &#39;frameNumber&#39;: None,
+ &#39;beamMode&#39;: &#39;IW&#39;,
+ &#39;additionalUrls&#39;: [&#39;https://datapool.asf.alaska.edu/RTC/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0.h5&#39;,
+  &#39;https://datapool.asf.alaska.edu/RTC/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0.iso.xml&#39;,
+  &#39;https://datapool.asf.alaska.edu/RTC/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_VV.tif&#39;,
+  &#39;https://datapool.asf.alaska.edu/RTC/OPERA-S1/OPERA_L2_RTC-S1_T094-200134-IW2_20201221T032017Z_20230928T232124Z_S1B_30_v1.0_mask.tif&#39;],
+ &#39;operaBurstID&#39;: &#39;T094_200134_IW2&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Download the RTCs</strong></p>
+<p>Now we will download the data to the <code class="docutils literal notranslate"><span class="pre">data_dir</span></code> location</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#empty out the existing directory first</span>
+<span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">data_dir</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+    <span class="n">child</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">user_pass_session</span><span class="p">,</span> <span class="n">fileType</span><span class="o">=</span><span class="n">FileDownloadType</span><span class="o">.</span><span class="n">ALL_FILES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-metadata-for-accessing-the-image-stack">
+<h2>5. Create metadata for accessing the image stack<a class="headerlink" href="#create-metadata-for-accessing-the-image-stack" title="Permalink to this heading">#</a></h2>
+<p>We create metadata in a pandas dataframe called <code class="docutils literal notranslate"><span class="pre">stackmeta</span></code> here. This will contain file names and dates for the SAR images, sorted by date.</p>
+<p>This metadata of file names and dates will be necessary to open up the individual images from the burst stack.</p>
+<!-- **Alternative 1: List Search**
+
+- Search by OPERA product ID
+
+- Identify OPERA IDs with an [OPERA-S1 Geographic Search on Vertex](https://search.asf.alaska.edu/#/?maxResults=250&dataset=OPERA-S1) --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgname</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">imgfilecp</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1">#co-polorized image (VV)</span>
+<span class="n">imgfilexp</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1">#cross-polarized image (VH)</span>
+<span class="n">imgdate</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1">#image date in datetime format</span>
+<span class="n">imgddoy</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1">#image day of year (in decimal days since Jan 1)</span>
+<span class="n">yearstart</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">properties</span>
+    <span class="n">imgname</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;sceneName&#39;</span><span class="p">])</span>
+    <span class="n">imgfilecp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_dir</span><span class="o">/</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;sceneName&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="s1">&#39;VV&#39;</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span> <span class="c1">#co-polarized</span>
+    <span class="n">imgfilexp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_dir</span><span class="o">/</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;sceneName&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="s1">&#39;VH&#39;</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">)</span> <span class="c1">#cross-polarized</span>
+    
+    <span class="n">rdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;startTime&#39;</span><span class="p">],</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%SZ&#39;</span><span class="p">)</span>
+    <span class="n">imgdate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rdate</span><span class="p">)</span>
+    <span class="n">imgddoy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">timediff</span><span class="p">(</span><span class="n">yearstart</span><span class="p">,</span><span class="n">rdate</span><span class="p">))</span>
+
+<span class="n">stackmeta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgname&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgname</span><span class="p">)</span>
+<span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgfilecp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgfilecp</span><span class="p">)</span>
+<span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgfilexp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgfilexp</span><span class="p">)</span>
+<span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgdate</span><span class="p">)</span>
+<span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgddoy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">imgddoy</span><span class="p">)</span>
+<span class="n">stackmeta</span> <span class="o">=</span> <span class="n">stackmeta</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;imgdate&#39;</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Bonus: Explore the dataframe</span>
+<span class="n">stackmeta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>imgname</th>
+      <th>imgfilecp</th>
+      <th>imgfilexp</th>
+      <th>imgdate</th>
+      <th>imgddoy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200108T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-01-08 03:20:10</td>
+      <td>7.139005</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200120T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-01-20 03:20:10</td>
+      <td>19.139005</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200201T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-02-01 03:20:10</td>
+      <td>31.139005</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200213T03200...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-02-13 03:20:09</td>
+      <td>43.138993</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200225T03200...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-02-25 03:20:09</td>
+      <td>55.138993</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200308T03200...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-03-08 03:20:09</td>
+      <td>67.138993</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200320T03200...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-03-20 03:20:09</td>
+      <td>79.138993</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200401T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-04-01 03:20:10</td>
+      <td>91.139005</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200413T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-04-13 03:20:10</td>
+      <td>103.139005</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200425T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-04-25 03:20:10</td>
+      <td>115.139005</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200507T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-05-07 03:20:11</td>
+      <td>127.139016</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200519T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-05-19 03:20:12</td>
+      <td>139.139028</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200531T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-05-31 03:20:13</td>
+      <td>151.139039</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200612T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-06-12 03:20:13</td>
+      <td>163.139039</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200624T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-06-24 03:20:14</td>
+      <td>175.139051</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200706T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-07-06 03:20:14</td>
+      <td>187.139051</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200718T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-07-18 03:20:15</td>
+      <td>199.139062</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200730T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-07-30 03:20:16</td>
+      <td>211.139074</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200811T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-08-11 03:20:17</td>
+      <td>223.139086</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200823T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-08-23 03:20:17</td>
+      <td>235.139086</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200904T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-09-04 03:20:18</td>
+      <td>247.139097</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200916T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-09-16 03:20:18</td>
+      <td>259.139097</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20200928T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-09-28 03:20:19</td>
+      <td>271.139109</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201010T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-10-10 03:20:19</td>
+      <td>283.139109</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201103T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-11-03 03:20:19</td>
+      <td>307.139109</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201115T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-11-15 03:20:19</td>
+      <td>319.139109</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201127T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-11-27 03:20:18</td>
+      <td>331.139097</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201209T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-12-09 03:20:18</td>
+      <td>343.139097</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>OPERA_L2_RTC-S1_T094-200134-IW2_20201221T03201...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>/home/jovyan/hayes/OPERA_L2_RTC-S1_T094-200134...</td>
+      <td>2020-12-21 03:20:17</td>
+      <td>355.139086</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="open-the-sar-data-stack-to-see-the-data">
+<h2>6. Open the SAR data stack to see the data<a class="headerlink" href="#open-the-sar-data-stack-to-see-the-data" title="Permalink to this heading">#</a></h2>
+<p>Below are several examples of how to open a stack of RTC images</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#example of opening a single image by imgind</span>
+
+<span class="n">imgind</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">imgtype</span> <span class="o">=</span> <span class="s1">&#39;imgfilecp&#39;</span> <span class="c1">#use &#39;imgfilexp&#39; for the VH images instead</span>
+
+<span class="n">singleimage</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="n">imgtype</span><span class="p">][</span><span class="n">imgind</span><span class="p">]))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dB</span><span class="p">(</span><span class="n">singleimage</span><span class="p">),</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">][</span><span class="n">imgind</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;2020-07-06 03:20:14&#39;)
+</pre></div>
+</div>
+<img alt="../_images/b7e5cb0b2d9cdfe4cb35fb76f379af2b41f29eef45e8c9f0e0ba6140ac156636.png" src="../_images/b7e5cb0b2d9cdfe4cb35fb76f379af2b41f29eef45e8c9f0e0ba6140ac156636.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#example of creating a time series of one point</span>
+
+<span class="c1">#Points on Black Rapids Glacier</span>
+<span class="n">ipt</span><span class="p">,</span><span class="n">jpt</span> <span class="o">=</span> <span class="mi">840</span><span class="p">,</span><span class="mi">1250</span> <span class="c1">#high elevation accumulation area</span>
+<span class="c1"># ipt,jpt = 800,1400 #part way up Black Rapids Glacier</span>
+<span class="c1"># ipt,jpt = 840,2030 #Down the Black Rapids Glacier, towards the front</span>
+
+<span class="c1">#Other interesting timeseries</span>
+<span class="c1"># ipt,jpt = 551,2485 #On the Delta River</span>
+<span class="c1"># ipt,jpt = 1230,480 #Example of vegetation</span>
+<span class="c1"># ipt,jpt = 1280,625 #On the lake, by the edge</span>
+<span class="c1"># ipt,jpt = 1290,625 #Middle of the lake</span>
+
+<span class="c1">#Or try your own, uncomment the following line and add points:</span>
+<span class="c1"># ipt,jpt = XX,XX</span>
+
+<span class="n">imgtype</span> <span class="o">=</span> <span class="s1">&#39;imgfilecp&#39;</span> <span class="c1">#use &#39;imgfilexp&#39; for VH</span>
+
+<span class="n">ptvec</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">)):</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="n">imgtype</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+    <span class="n">ptvec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dB</span><span class="p">(</span><span class="n">cmap</span><span class="p">[</span><span class="n">ipt</span><span class="p">,</span><span class="n">jpt</span><span class="p">]))</span>
+
+
+<span class="c1">#plot point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">]),</span><span class="n">ptvec</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">32</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1">#plot where the point is on a map</span>
+<span class="n">singleimage</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgfilecp&#39;</span><span class="p">][</span><span class="mi">15</span><span class="p">]))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dB</span><span class="p">(</span><span class="n">singleimage</span><span class="p">),</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">jpt</span><span class="p">,</span><span class="n">ipt</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1">#plot region in higher resolution</span>
+<span class="n">hw</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1">#half window</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dB</span><span class="p">(</span><span class="n">singleimage</span><span class="p">)[</span><span class="n">ipt</span><span class="o">-</span><span class="n">hw</span><span class="p">:</span><span class="n">ipt</span><span class="o">+</span><span class="n">hw</span><span class="p">,</span><span class="n">jpt</span><span class="o">-</span><span class="n">hw</span><span class="p">:</span><span class="n">jpt</span><span class="o">+</span><span class="n">hw</span><span class="p">],</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hw</span><span class="p">,</span><span class="n">hw</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f710fab42f0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/bd0d66eb171aed0827bb5e5c09cb02b11e19f17b8fdf99e601c3c8b17ec557cf.png" src="../_images/bd0d66eb171aed0827bb5e5c09cb02b11e19f17b8fdf99e601c3c8b17ec557cf.png" />
+<img alt="../_images/965cda913bc4105a33af77b22c295b1795665542ffabc3a5d6f4669dd7c197ca.png" src="../_images/965cda913bc4105a33af77b22c295b1795665542ffabc3a5d6f4669dd7c197ca.png" />
+<img alt="../_images/6d46e8a4e991c34dbbc80c73a6c2f96277968e12e5d1062c6ca2ebc0bf6f9c15.png" src="../_images/6d46e8a4e991c34dbbc80c73a6c2f96277968e12e5d1062c6ca2ebc0bf6f9c15.png" />
+</div>
+</div>
+</section>
+<section id="load-the-mask-file">
+<h2>7. Load the mask file<a class="headerlink" href="#load-the-mask-file" title="Permalink to this heading">#</a></h2>
+<p>We will grab the first mask file we can find, as they will be identical.</p>
+<p>OPERA mask files have values of 0, 1, 2, 3, 255 as described by:</p>
+<ul class="simple">
+<li><p>Class 0: Valid sample not affected by layover or shadow</p></li>
+<li><p>Class 1: Valid sample affected by shadow</p></li>
+<li><p>Class 2: Valid sample affected by layover</p></li>
+<li><p>Class 3: Valid sample affected by layover and shadow</p></li>
+<li><p>Class 255: Invalid sample (fill value)</p></li>
+</ul>
+<p>For the sake of this workflow, we only need a mask to show where there is data, so we will reduce this to a binary mask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maskfile</span> <span class="o">=</span> <span class="n">data_dir</span><span class="o">/</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgname&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">_mask.tif&quot;</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">maskfile</span><span class="p">))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">&lt;=</span><span class="mi">3</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f710fbeeae0&gt;
+</pre></div>
+</div>
+<img alt="../_images/820848e5dcd47643aed801ff9edc23a33c31c8f868fc3710dafafe60638be4da.png" src="../_images/820848e5dcd47643aed801ff9edc23a33c31c8f868fc3710dafafe60638be4da.png" />
+</div>
+</div>
+</section>
+<section id="identify-the-onset-of-snow-melt">
+<h2>8. Identify the onset of snow melt<a class="headerlink" href="#identify-the-onset-of-snow-melt" title="Permalink to this heading">#</a></h2>
+<p><strong>Determine the melt backscatter threshold</strong></p>
+<p>The onset of snowmelt on non-vegetated terrain can be determined by a tracking when the backscatter drops 3 dB below the mean winter (dry snow) backscatter in C-band (Nagler and Rott, 2000).</p>
+<p>To determine this, first we need to calculate the winter mean backscatter for each pixel. We define winter here as Jan. 1 to Apr. 1. We will get the mean of those winter images while only loading one image into memory at a time, rather than the whole stack.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meltthreshold</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span> <span class="c1">#dB from winter mean to identify melt at</span>
+
+<span class="c1">#identify winter images</span>
+<span class="n">winterstart</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">winterend</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">wintermeta</span> <span class="o">=</span> <span class="n">stackmeta</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">winterstart</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">winterend</span><span class="p">)]</span>
+<span class="n">winterimgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wintermeta</span><span class="p">[</span><span class="s1">&#39;imgfilecp&#39;</span><span class="p">])</span>
+<span class="n">winterlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wintermeta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="n">winterlen</span><span class="si">}</span><span class="s2"> winter images&quot;</span><span class="p">)</span>
+
+<span class="c1">#intialize melt threshold map</span>
+<span class="n">imgshape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">meltth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">imgshape</span><span class="p">)</span>
+<span class="n">meltth</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1">#calculate mean winter backscatter</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">file</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">winterimgs</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">file</span><span class="p">))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">dB</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">meltth</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">+=</span> <span class="n">img</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">meltth</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">winterlen</span> <span class="o">*</span> <span class="n">meltth</span>
+
+<span class="c1">#Set the melt threshold</span>
+<span class="n">meltth</span> <span class="o">=</span> <span class="n">meltth</span> <span class="o">+</span> <span class="n">meltthreshold</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 7 winter images
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the threshold</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">meltth</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Melt threshold (dB)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Melt threshold (dB)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/ebae6d9d2098305d7f18cfad996ef2f70ce0198a4013c0284b55d71386dcd636.png" src="../_images/ebae6d9d2098305d7f18cfad996ef2f70ce0198a4013c0284b55d71386dcd636.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot melt in single images</span>
+<span class="n">imgindlist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">imgind</span> <span class="ow">in</span> <span class="n">imgindlist</span><span class="p">:</span>
+    <span class="n">singleimage</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgfilecp&#39;</span><span class="p">][</span><span class="n">imgind</span><span class="p">]))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+    <span class="n">singleimage</span> <span class="o">=</span> <span class="n">dB</span><span class="p">(</span><span class="n">singleimage</span><span class="p">)</span>
+    <span class="n">meltmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">singleimage</span><span class="o">&lt;</span><span class="n">meltth</span><span class="p">,</span><span class="n">mask</span><span class="o">=~</span><span class="n">mask</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">meltmap</span><span class="p">,</span><span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgdate&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">imgind</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c4d9cd4ec107216114878afdcc9a14a73e0c80fe7c34be9ef88e97c9f064f722.png" src="../_images/c4d9cd4ec107216114878afdcc9a14a73e0c80fe7c34be9ef88e97c9f064f722.png" />
+<img alt="../_images/53ede36420823efaadf3329e3fafa4eaeb2705265b0388787ca56ba3afb9bfa5.png" src="../_images/53ede36420823efaadf3329e3fafa4eaeb2705265b0388787ca56ba3afb9bfa5.png" />
+<img alt="../_images/e2081ae7ab077d46191034ad2a09446b8152c4bb6515cf86716b6bdcfd014eaf.png" src="../_images/e2081ae7ab077d46191034ad2a09446b8152c4bb6515cf86716b6bdcfd014eaf.png" />
+<img alt="../_images/ee03d6f1df83da675bef21442eeb4f69910aab84ba40a6f813be3cfeb7b31eea.png" src="../_images/ee03d6f1df83da675bef21442eeb4f69910aab84ba40a6f813be3cfeb7b31eea.png" />
+<img alt="../_images/d3d8ddafa0981efdf9da0e43d526ba4c878eff69dd405f64154dbbc18f86127e.png" src="../_images/d3d8ddafa0981efdf9da0e43d526ba4c878eff69dd405f64154dbbc18f86127e.png" />
+</div>
+</div>
+<p><strong>Identify the date of onset of melt</strong></p>
+<p>To track melt onset, we will identify the first image in which there is melt for each pixel.</p>
+<p>The true onset of melt is somewhere between the last image of no melt, and the first image of melt, so we will set the onset date at halfway between those two measurements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Map the date of melt onset</span>
+<span class="n">meltonsetmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">imgshape</span><span class="p">)</span>
+
+<span class="c1">#create a vector with the day of year (as midpoints between images)</span>
+<span class="n">doyvec</span> <span class="o">=</span> <span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgddoy&#39;</span><span class="p">][:]</span>
+<span class="n">doyvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">doyvec</span><span class="p">)</span>
+<span class="n">doymid</span> <span class="o">=</span> <span class="p">(</span><span class="n">doyvec</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">doyvec</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="mf">0.5</span>
+<span class="n">doymid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mi">0</span><span class="p">],</span><span class="n">doymid</span><span class="p">))</span>
+
+<span class="c1">#iterate through all image</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">)):</span>
+    <span class="n">cimg</span> <span class="o">=</span> <span class="n">gdal</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">stackmeta</span><span class="p">[</span><span class="s1">&#39;imgfilecp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">.</span><span class="n">ReadAsArray</span><span class="p">()</span>
+    <span class="n">cmelt</span> <span class="o">=</span> <span class="n">dB</span><span class="p">(</span><span class="n">cimg</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">meltth</span>
+    <span class="n">updatemask</span> <span class="o">=</span> <span class="p">(</span><span class="n">cmelt</span><span class="o">==</span><span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">meltonsetmap</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">meltonsetmap</span><span class="p">[</span><span class="n">updatemask</span><span class="p">]</span> <span class="o">=</span> <span class="n">doymid</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">meltonsetmap</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1">#Plot the onset date of melt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">meltonsetmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">165</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Onset of Melt (days since Jan. 1)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Onset of Melt (days since Jan. 1)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/1156d33e11f2a9c2f05ab668132009cfad7ee842a0b049a73b7be3452311cb2b.png" src="../_images/1156d33e11f2a9c2f05ab668132009cfad7ee842a0b049a73b7be3452311cb2b.png" />
+</div>
+</div>
+</section>
+<section id="trying-several-other-years-and-or-burst-ids">
+<h2>10. Trying several other years and/or burst IDs<a class="headerlink" href="#trying-several-other-years-and-or-burst-ids" title="Permalink to this heading">#</a></h2>
+<p>Go back to section 4, and try with other possible burst IDs or years.</p>
+<p>Similar Burst IDs in the Hayes range:<br>
+<code class="docutils literal notranslate"><span class="pre">T160_342216_IW2</span></code> <br>
+<code class="docutils literal notranslate"><span class="pre">T160_342215_IW2</span></code></p>
+<p>Also try other years:<code class="docutils literal notranslate"><span class="pre">2018</span></code>, <code class="docutils literal notranslate"><span class="pre">2019</span></code>, or <code class="docutils literal notranslate"><span class="pre">2021</span></code> for example (2022 has very few images of this region)</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-.local-NISAR_EA_Workshop_2024_1-py"
+        },
+        kernelOptions: {
+            name: "conda-env-.local-NISAR_EA_Workshop_2024_1-py",
+            path: "./OPERA"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-.local-NISAR_EA_Workshop_2024_1-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="OPERA_data_recipes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OPERA Data Recipes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="OPERA-RTC-S1-time_series.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">OPERA RTC-S1 Coefficient of Variation: User Supplied Dataset Notebook</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-needed-python-packages">1. Import needed Python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-with-asf-search-and-start-a-session">2. Authenticate with asf_search and start a session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-directory-in-which-to-download-the-rtcs">3. Create a directory in which to download the RTCs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtain-opera-products-using-a-burst-id">4. Obtain OPERA products using a Burst ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-metadata-for-accessing-the-image-stack">5. Create metadata for accessing the image stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-the-sar-data-stack-to-see-the-data">6. Open the SAR data stack to see the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-mask-file">7. Load the mask file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identify-the-onset-of-snow-melt">8. Identify the onset of snow melt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trying-several-other-years-and-or-burst-ids">10. Trying several other years and/or burst IDs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Alaska Satellite Facility
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
