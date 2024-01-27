@@ -3,7 +3,7 @@
 
 title: "OpenSARLab NISAR Early Adopter Workshop: 2024.1"
 author: The Alaska Satellite Facility
-logo: logo.svg
+logo: ASF_logo.svg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
