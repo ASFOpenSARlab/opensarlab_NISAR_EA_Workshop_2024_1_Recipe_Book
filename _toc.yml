@@ -44,6 +44,7 @@ parts:
         sections:
         - file: OPERA/search_download_OPERA-RTC-S1.ipynb
         - file: OPERA/search_download_OPERA-CSLC-S1.ipynb
+        - file: OPERA/OPERA_S3_Access.ipynb
       - file: OPERA/OPERA_data_recipes.md
         sections:
         - file: OPERA/OPERA_RTC_timeseries_snow.ipynb
