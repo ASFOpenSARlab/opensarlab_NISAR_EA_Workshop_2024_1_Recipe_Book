@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 env="NISAR_EA_Workshop_2024_1"
-local="/home/jbbarre/.local"
+local="/home/jovyan/.local"
 env_prefix=$local"/envs/"$env
 python_version=$(conda run -n $env python --version | cut -b 8-10)
 site_packages=$env_prefix"/lib/python"$python_version"/site-packages"
